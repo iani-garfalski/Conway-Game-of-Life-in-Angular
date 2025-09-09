@@ -1,0 +1,20 @@
+<!-- game-board.html -->
+<div class="board-wrap">
+  <div class="grid"
+       [style.--rows]="size().rows"
+       [style.--cols]="size().cols"
+       (pointerdown)="dragging = true"
+       (pointerup)="dragging = false"
+       (pointerleave)="dragging = false">
+    @for (row of grid(); track $index; let r = $index) {
+      @for (cell of row; track $index; let c = $index) {
+        <div class="cell"
+             [class.alive]="cell === CellState.Alive"
+             [class.dead]="cell === CellState.Dead"
+             (click)="onCellClick({ row: r, col: c })"
+             (pointerenter)="onCellDrag({ row: r, col: c })">
+        </div>
+      }
+    }
+  </div>
+</div>

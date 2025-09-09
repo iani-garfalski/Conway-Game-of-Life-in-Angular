@@ -1,0 +1,33 @@
+<!-- game-controls.html -->
+<div class="controls">
+  <div class="left">
+    <button (click)="runningToggled.emit()">{{ running() ? 'Pause' : 'Start' }}</button>
+    <button (click)="stepRequested.emit()">Step</button>
+    <button (click)="resetRequested.emit()">Reset</button>
+    <button (click)="clearRequested.emit()">Clear</button>
+  </div>
+
+  <div class="right">
+    <label for="speed">Speed (ms)
+      <input id="speed" type="range"
+             min="10" max="1000"
+             [value]="tickMs()"
+             (input)="onSpeedChange($event.target.value)">
+      <span class="small">{{ tickMs() }} ms</span>
+    </label>
+
+    <label for="rows">Rows
+      <input id="rows" type="number"
+             [value]="size().rows"
+             (input)="onRowsChange($event.target.value)"
+             min="5" max="200">
+    </label>
+
+    <label for="cols">Cols
+      <input id="cols" type="number"
+             [value]="size().cols"
+             (input)="onColsChange($event.target.value)"
+             min="5" max="200">
+    </label>
+  </div>
+</div>

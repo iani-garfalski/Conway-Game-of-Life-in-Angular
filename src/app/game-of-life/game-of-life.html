@@ -1,0 +1,26 @@
+<!-- game-of-life.html -->
+<div class="container">
+  <app-game-controls
+    [running]="running()"
+    [tickMs]="tickMs()"
+    [size]="size()"
+    (runningToggled)="toggleRunning()"
+    (stepRequested)="step()"
+    (resetRequested)="reset()"
+    (clearRequested)="clear()"
+    (speedChanged)="setSpeed($event)"
+    (resizeRequested)="resize($event)">
+  </app-game-controls>
+
+  <app-game-stats
+    [generation]="generation()"
+    [aliveCount]="aliveCount()">
+  </app-game-stats>
+
+  <app-game-board
+    [grid]="grid()"
+    [size]="size()"
+    (cellToggled)="toggleCell($event)"
+    (cellDragged)="dragSet($event)">
+  </app-game-board>
+</div>
